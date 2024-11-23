@@ -4,8 +4,8 @@
  */
 package CapaGrafica;
 
-import javax.swing.JOptionPane;
-import proyectoprogra.capaLogica.Cine;
+import capaLogica.Cine;
+
 
 
 /**

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package proyectoprogra.capaLogica;
+package capaLogica;
 
 /**
  *
@@ -11,10 +11,11 @@ package proyectoprogra.capaLogica;
 public class Cine {
 
     private String[] pelicula = new String [3];
-    private String[][][] salas = new String[10][8][3];
-    private int filas = 10;
-    private int columnas = 8;
+    private int filas = 11;
+    private int columnas = 9;
     private int profundidad = 3;
+    private String[][][] salas = new String[filas][columnas][profundidad];
+    
     
     public static final int CLIENTE_REGULAR = 2800;
     public static final int ADULTO_MAYOR = 2300;
@@ -33,8 +34,9 @@ public class Cine {
                     if(j==0){
                         if(k==0){
                             hilera += salas[k][j][i] = "     ";
+                        }if(k!=10){
+                        hilera += salas[k][j][i] = (k+1)+"    ";
                         }
-                    hilera += salas[k][j][i] = " "+(k+1)+"  ";
                     }else{
                     hilera += salas [k][j][i] = " &  ";
                     }

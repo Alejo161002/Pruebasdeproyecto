@@ -4,7 +4,8 @@
  */
 package CapaGrafica;
 
-import proyectoprogra.capaLogica.Cine;
+import capaLogica.Cine;
+
 
 /**
  *

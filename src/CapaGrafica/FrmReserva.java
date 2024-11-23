@@ -4,8 +4,9 @@
  */
 package CapaGrafica;
 
+import capaLogica.Cine;
 import javax.swing.ButtonGroup;
-import proyectoprogra.capaLogica.Cine;
+
 
 /**
  *
