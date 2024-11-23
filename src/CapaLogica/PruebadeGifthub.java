@@ -4,6 +4,8 @@
  */
 package CapaLogica;
 
+import CapaGrafica.FrmCliente;
+
 /**
  *
  * @author Ale
@@ -14,9 +16,9 @@ public class PruebadeGifthub {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        int hola;
-        int pruebas;
-        int zorra;
+        FrmCliente c1 = new FrmCliente();
+        c1.setVisible(true);
+        c1.setLocationRelativeTo(null);
     }
     
 }
