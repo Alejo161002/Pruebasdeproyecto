@@ -12,6 +12,10 @@ public class Cine {
 
     private String[] pelicula = new String [3];
     private String[][][] salas = new String[10][8][3];
+    private int filas = 10;
+    private int columnas = 8;
+    private int profundidad = 3;
+    
     public static final int CLIENTE_REGULAR = 2800;
     public static final int ADULTO_MAYOR = 2300;
     public static final int NINNOS = 2000;
@@ -21,14 +25,25 @@ public class Cine {
         pelicula[1] = "Rio 2";
         pelicula[2] = "X-MEN";
     }
-    public void vaciarSalas(){
-        for (int i = 0; i < 10; i++) {
-            for (int j= 0; i < 10; i++) {
-                for (int k = 0; i < 10; i++) {
-                    salas [i][j][k] = null;
+    public String vaciarSalas(){
+        String hilera ="";
+        for (int i = 0; i < profundidad; i++) {
+            for (int j= 0; j < columnas; j++) {
+                for (int k = 0; k < filas; k++) {
+                    if(j==0){
+                        if(k==0){
+                            hilera += salas[k][j][i] = "     ";
+                        }
+                    hilera += salas[k][j][i] = " "+(k+1)+"  ";
+                    }else{
+                    hilera += salas [k][j][i] = " &  ";
+                    }
                 }
+                hilera += "\n";
             }
+            hilera += "\n";
         }
+        return hilera;
     }
 
     public String validacionAsientos(int fila, int columna, int sala) {
