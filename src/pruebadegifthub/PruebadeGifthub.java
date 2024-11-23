@@ -16,6 +16,7 @@ public class PruebadeGifthub {
     public static void main(String[] args) {
         int hola;
         int pruebas;
+        int zorra;
     }
     
 }
