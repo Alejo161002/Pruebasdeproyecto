@@ -78,23 +78,25 @@ public class Cliente {
             throw new IllegalArgumentException("El codigo de seguridad debe ser un numero de 3 digitos.");
         }
     }
-    
-    private void validarNumeroTarjeta(){
-        if(tipoTarjeta.equals("Visa")) {
-            if(!(numeroTarjeta.length()==16 && numeroTarjeta.startsWith("4"))){
-                throw new IllegalArgumentException("Numero de tarhjeta Visa Invalido");
-            }
-        }else if (tipoTarjeta.equals("Master Card")) {
-        if (!(numeroTarjeta.length()== 16 && (numeroTarjeta.startsWith("51")|| numeroTarjeta.startsWith("52")
-                ||numeroTarjeta.startsWith("53")||numeroTarjeta.startsWith("54")
-                ||numeroTarjeta.startsWith("55"))));{
+
+private void validarNumeroTarjeta() {
+    String Visa = "^4[0-9]{15}$"; 
+    String MasterCard = "^(5[1-5][0-9]{14})$"; 
+
+    if (tipoTarjeta.equals("Visa")) {
+        if (!Pattern.matches(Visa,numeroTarjeta)) {
+            throw new IllegalArgumentException("Numero Visa Invalido");
+        }
+    } else if (tipoTarjeta.equals("Master Card")) {
+        if (!Pattern.matches(MasterCard, numeroTarjeta)) {
             throw new IllegalArgumentException("Numero de tarjeta MasterCard Invalido");
         }
-        }
-        if (!validarAlgoritmoLunh(numeroTarjeta)){
-            throw new IllegalArgumentException("Numero de tarjeta invalido");
-        }
     }
+
+    if (!validarAlgoritmoLunh(numeroTarjeta)) {
+        throw new IllegalArgumentException("Numero de tarjeta invalido segun el algoritmo de Luhn.");
+    }
+}
     
     private boolean validarAlgoritmoLunh(String numero) {
     int suma = 0;
