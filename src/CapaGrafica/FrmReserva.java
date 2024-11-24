@@ -237,7 +237,9 @@ public class FrmReserva extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPruebaActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        FrmCobro fc= new FrmCobro();
+        fc.setVisible(true);
+        fc.setLocationRelativeTo(this);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
