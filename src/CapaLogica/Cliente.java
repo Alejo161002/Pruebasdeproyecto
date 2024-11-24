@@ -67,7 +67,7 @@ public class Cliente {
     
     private void validarFechaVencimiento(){
         if(fechaVencimiento.isBefore(LocalDate.now())){
-            throw new IllegalArgumentException("LA fecha de venbcimiento debe ser posterior a la fecha actual.");
+            throw new IllegalArgumentException("La fecha de venbcimiento debe ser posterior a la fecha actual.");
     
     }
     }
