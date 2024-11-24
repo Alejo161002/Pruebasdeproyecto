@@ -11,8 +11,8 @@ package capaLogica;
 public class Cine {
 
     private String[] pelicula = new String [3];
-    private int filas = 11;
-    private int columnas = 9;
+    private int filas = 10;
+    private int columnas = 8;
     private int profundidad = 3;
     private String[][][] salas = new String[filas][columnas][profundidad];
     private int numeroSala = 0;
@@ -30,39 +30,17 @@ public class Cine {
     }
     public String vaciarSalas(){
         String hilera ="";
-        /*hilera += salas[0][0][0] = "   ";
-        hilera += salas[1][0][0] = "A";
-        hilera += salas[2][0][0] = "B";
-        hilera += salas[3][0][0] = "C";
-        hilera += salas[4][0][0] = "D";
-        hilera += salas[5][0][0] = "E";
-        hilera += salas[6][0][0] = "F";
-        hilera += salas[7][0][0] = "G";
-        hilera += salas[8][0][0] = "H";
-        hilera += salas[9][0][0] = "I";
-        hilera += salas[10][0][0] = "J";*/
         for (int i = 0; i<profundidad;i++){
             if(i==0){
-                hilera += salas[0][0][0] = "  ";
-            }
             for (int j= 0; j < columnas; j++) {
                 for (int k = 0; k < filas; k++) {
-                    if(i==0){
-                    if(j==0){
-                        if(k==0){
-                            hilera += salas[k][j][this.numeroSala] = "     ";
-                        }if(k!=10){
-                        hilera += salas[k][j][this.numeroSala] = (k+1)+"    ";
+                    
+                            hilera += salas [k][j][this.numeroSala] = " &   ";
                         }
-                    }else{
-                    hilera += salas [k][j][this.numeroSala] = " &  ";
-                    }
+                hilera += "\n\n";
                     }
                 }
-                hilera += "\n";
-            }
         }
-            
         return hilera;
     }
 
