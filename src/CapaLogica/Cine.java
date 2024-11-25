@@ -34,10 +34,16 @@ public class Cine {
             if(i==0){
             for (int j= 0; j < columnas; j++) {
                 for (int k = 0; k < filas; k++) {
-                    
-                            hilera += salas [k][j][this.numeroSala] = " &   ";
+                    if(k==0){
+                        hilera += salas [k][j][this.numeroSala] = "&";
+                    }
+                    else{
+                            hilera += salas [k][j][this.numeroSala] = "        &";
+                    }
                         }
+                if(j<7){
                 hilera += "\n\n";
+                }
                     }
                 }
         }
@@ -61,45 +67,45 @@ public class Cine {
         return hilera;
     }
     public String compraDeEntradas(int numeroSala,int numerodeEntradas
-            ,String filaAsiento, int columnaAsiento){
+            ,char filaAsiento, int columnaAsiento){
         int fila = 0;
         String mensaje ="";
         for(int i=0 ; i<numerodeEntradas;i++){
             switch (filaAsiento) {
-                case "a","A"-> {
+                case 'a','A'-> {
                     fila = 1;
                 }
-                case "b","B"-> {
+                case 'b','B'-> {
                     fila = 2;
                 }
-                case "c","C"-> {
+                case 'c','C'-> {
                     fila = 3;
                 }
-                case "d","D"-> {
+                case 'd','D'-> {
                     fila = 4;
                 }
-                case "e","E"-> {
+                case 'e','E'-> {
                     fila = 5;
                 }
-                case "f","F"-> {
+                case 'f','F'-> {
                     fila = 6;
                 }
-                case "g","G"-> {
+                case 'g','G'-> {
                     fila = 7;
                 }
-                case "h","H"-> {
+                case 'h','H'-> {
                     fila = 8;
                 }
-                case "i","I"-> {
+                case 'i','I'-> {
                     fila = 9;
                 }
-                case "j","J"-> {
+                case 'j','J'-> {
                     fila = 10;
                 }
                 default -> mensaje = "Asiento no valido";
             }
             salas[fila][columnaAsiento][numeroSala] = "X";
-            mensaje += "asiento"+filaAsiento+columnaAsiento;
+            mensaje += "asiento"+filaAsiento+columnaAsiento+" reservado";
         }
         
         return mensaje;
