@@ -7,6 +7,7 @@ package CapaGrafica;
 
 import capaLogica.Cine;
 import javax.swing.ButtonGroup;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -64,8 +65,8 @@ public class FrmReserva extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        txtAsientos = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
+        btnSelecionarAsientos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -164,16 +165,17 @@ public class FrmReserva extends javax.swing.JFrame {
 
         jLabel16.setText("G");
 
-        txtAsientos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAsientosActionPerformed(evt);
-            }
-        });
-
         jButton2.setText("vaciar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
+            }
+        });
+
+        btnSelecionarAsientos.setText("Seleccionar asientos");
+        btnSelecionarAsientos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSelecionarAsientosActionPerformed(evt);
             }
         });
 
@@ -190,13 +192,12 @@ public class FrmReserva extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(txtAdultoMayor, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtninnos, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtAsientos, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtninnos, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel15)
                             .addComponent(jLabel14)))
@@ -208,7 +209,7 @@ public class FrmReserva extends javax.swing.JFrame {
                         .addComponent(txtAdultoRegular, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel16))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4)
@@ -222,12 +223,14 @@ public class FrmReserva extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel13)))
+                        .addComponent(jLabel13))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(btnSelecionarAsientos))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -274,8 +277,8 @@ public class FrmReserva extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(txtninnos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(txtAsientos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33))
+                .addComponent(btnSelecionarAsientos)
+                .addGap(32, 32, 32))
             .addGroup(layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -299,10 +302,11 @@ public class FrmReserva extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel14)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnPrueba)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton1)
+                        .addComponent(jButton2)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -355,8 +359,12 @@ public class FrmReserva extends javax.swing.JFrame {
         fc.setLocationRelativeTo(this);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void txtAsientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAsientosActionPerformed
-        int numeroSala=1;
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        txtResultado.setText(" ");
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void btnSelecionarAsientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarAsientosActionPerformed
+        int numeroSala=0;
         if(rbtnItalia.isSelected()){
             numeroSala=0;
         }
@@ -370,20 +378,32 @@ public class FrmReserva extends javax.swing.JFrame {
         char temp;
         char si =' ';
         int no = 0;
-        String mensaje = txtAsientos.getText();
+        int suma = 0;
+        int entradasRegulares = Integer.parseInt(txtAdultoRegular.getText());
+        int entradasMayores = Integer.parseInt(txtAdultoMayor.getText());
+        int entradasNinnos = Integer.parseInt(txtninnos.getText());
+        suma = entradasRegulares+entradasMayores+entradasNinnos;
+        if(suma<5){
+            cn.vaciarSalas();
+        for(int j=0;j<suma;j++){
+        String mensaje;
+        mensaje = JOptionPane.showInputDialog("Ingrese el asiento");
         asientos= mensaje.toCharArray();
         si = asientos[0];
+        
         temp = asientos[1];
         no = Character.getNumericValue(temp);
-        System.out.println(temp);
-        txtResultado.append(cn.compraDeEntradas(numeroSala, 3, si, no));
+        txtResultado.setText(cn.compraDeEntradas(numeroSala, si, no));
+            JOptionPane.showMessageDialog(this, cn.compraDeEntradas(numeroSala, si, no));
+            txtResultado.setText(cn.reemplazarAsientos(numeroSala, si, no));
+        }
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Numero de entradas maximo excedido");
+        }
         
-     
-    }//GEN-LAST:event_txtAsientosActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        txtResultado.setText(" ");
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnSelecionarAsientosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -422,6 +442,7 @@ public class FrmReserva extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnPrueba;
+    private javax.swing.JButton btnSelecionarAsientos;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -446,7 +467,6 @@ public class FrmReserva extends javax.swing.JFrame {
     private javax.swing.JRadioButton rbtnX;
     private javax.swing.JTextField txtAdultoMayor;
     private javax.swing.JTextField txtAdultoRegular;
-    private javax.swing.JTextField txtAsientos;
     private javax.swing.JTextArea txtResultado;
     private javax.swing.JTextField txtninnos;
     // End of variables declaration//GEN-END:variables

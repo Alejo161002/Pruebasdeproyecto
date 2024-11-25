@@ -66,11 +66,10 @@ public class Cine {
                 "Niños:\t₡"+NINNOS+"\t₡"+NINNOS+"\t₡"+NINNOS;
         return hilera;
     }
-    public String compraDeEntradas(int numeroSala,int numerodeEntradas
+    public String compraDeEntradas(int numeroSala
             ,char filaAsiento, int columnaAsiento){
         int fila = 0;
         String mensaje ="";
-        for(int i=0 ; i<numerodeEntradas;i++){
             switch (filaAsiento) {
                 case 'a','A'-> {
                     fila = 1;
@@ -105,9 +104,67 @@ public class Cine {
                 default -> mensaje = "Asiento no valido";
             }
             salas[fila][columnaAsiento][numeroSala] = "X";
-            mensaje += "asiento"+filaAsiento+columnaAsiento+" reservado";
-        }
+            mensaje += "asiento "+filaAsiento+columnaAsiento+" reservado";
         
+        return mensaje;
+    }
+    public String reemplazarAsientos(int numeroSala
+            ,char filaAsiento, int columnaAsiento){
+        int fila = 0;
+        String mensaje ="";
+            switch (filaAsiento) {
+                case 'a','A'-> {
+                    fila = 1;
+                }
+                case 'b','B'-> {
+                    fila = 2;
+                }
+                case 'c','C'-> {
+                    fila = 3;
+                }
+                case 'd','D'-> {
+                    fila = 4;
+                }
+                case 'e','E'-> {
+                    fila = 5;
+                }
+                case 'f','F'-> {
+                    fila = 6;
+                }
+                case 'g','G'-> {
+                    fila = 7;
+                }
+                case 'h','H'-> {
+                    fila = 8;
+                }
+                case 'i','I'-> {
+                    fila = 9;
+                }
+                case 'j','J'-> {
+                    fila = 10;
+                }
+                default -> mensaje = "Asiento no valido";
+            }
+            
+        mensaje ="";
+        for (int i = 0; i<profundidad;i++){
+            if(i==0){
+            for (int j= 0; j < columnas; j++) {
+                for (int k = 0; k < filas; k++) {
+                    if(k==0){
+                        mensaje += salas [k][j][this.numeroSala] = "&";
+                    }
+                    else{
+                            mensaje += salas [k][j][this.numeroSala] = "        &";
+                    }
+                        }
+                if(j<7){
+                mensaje  += "\n\n";
+                }
+                    }
+                }
+        }
+        mensaje += salas[fila][columnaAsiento][numeroSala] = "X";
         return mensaje;
     }
 }
