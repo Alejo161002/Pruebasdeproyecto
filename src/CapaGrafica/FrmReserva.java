@@ -28,6 +28,7 @@ public class FrmReserva extends javax.swing.JFrame {
         
         
         
+        
     }
 
     /**
@@ -349,8 +350,7 @@ public class FrmReserva extends javax.swing.JFrame {
         if(rbtnX.isSelected()){
             numeroSala=2;
         }
-        cn.peliculas(numeroSala);
-        txtResultado.setText(cn.vaciarSalas());
+        txtResultado.setText(cn.mostrarAsientos(numeroSala));
     }//GEN-LAST:event_btnPruebaActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -383,19 +383,25 @@ public class FrmReserva extends javax.swing.JFrame {
         int entradasMayores = Integer.parseInt(txtAdultoMayor.getText());
         int entradasNinnos = Integer.parseInt(txtninnos.getText());
         suma = entradasRegulares+entradasMayores+entradasNinnos;
+        
         if(suma<5){
-            cn.vaciarSalas();
+            cn.construirAsientos();
         for(int j=0;j<suma;j++){
         String mensaje;
         mensaje = JOptionPane.showInputDialog("Ingrese el asiento");
         asientos= mensaje.toCharArray();
         si = asientos[0];
-        
         temp = asientos[1];
         no = Character.getNumericValue(temp);
-        txtResultado.setText(cn.compraDeEntradas(numeroSala, si, no));
-            JOptionPane.showMessageDialog(this, cn.compraDeEntradas(numeroSala, si, no));
-            txtResultado.setText(cn.reemplazarAsientos(numeroSala, si, no));
+        if(cn.reservarAsiento(si, no, numeroSala)==true){
+            cn.reservarAsiento(si, no, numeroSala);
+            cn.mostrarAsientos(numeroSala);
+            JOptionPane.showMessageDialog(this, "Asiento Reservado con exito");
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Asiento no disponible");
+        }
+            //txtResultado.setText(cn.reemplazarAsientos(numeroSala, si, no));
         }
         }
         else{

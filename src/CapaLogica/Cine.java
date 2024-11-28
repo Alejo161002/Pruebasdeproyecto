@@ -14,14 +14,14 @@ public class Cine {
     private int filas = 10;
     private int columnas = 8;
     private int profundidad = 3;
-    private String[][][] salas = new String[filas][columnas][profundidad];
+    public String[][][] salas = new String[filas][columnas][profundidad];
     private int numeroSala = 0;
     
     
     public static final int CLIENTE_REGULAR = 2800;
     public static final int ADULTO_MAYOR = 2300;
     public static final int NINNOS = 2000;
-
+    
     public void peliculas(int numeroSala) {
         pelicula[0] = "Italia 90";
         pelicula[1] = "Rio 2";
@@ -167,4 +167,68 @@ public class Cine {
         mensaje += salas[fila][columnaAsiento][numeroSala] = "X";
         return mensaje;
     }
+    public void construirAsientos() {
+        for (int i = 0; i < profundidad; i++) {
+            for (int j = 0; j < columnas; j++) {
+                for (int k = 0; k < filas; k++) {
+                salas[k][j][i] = "L"; // 'L' representa un asiento libre.
+                }
+            }
+        }
+    }
+    public boolean reservarAsiento(int filaAsiento, int columna,int sala) {
+        int fila = 0;
+        String mensaje ="";
+            switch (filaAsiento) {
+                case 'a','A'-> {
+                    fila = 0;
+                }
+                case 'b','B'-> {
+                    fila = 1;
+                }
+                case 'c','C'-> {
+                    fila = 2;
+                }
+                case 'd','D'-> {
+                    fila = 3;
+                }
+                case 'e','E'-> {
+                    fila = 4;
+                }
+                case 'f','F'-> {
+                    fila = 5;
+                }
+                case 'g','G'-> {
+                    fila = 6;
+                }
+                case 'h','H'-> {
+                    fila = 7;
+                }
+                case 'i','I'-> {
+                    fila = 8;
+                }
+                case 'j','J'-> {
+                    fila = 9;
+                }
+                default -> mensaje = "Asiento no valido";
+            }
+            columna = columna-1;
+        if (salas[fila][columna][sala] == "L") {
+            salas[fila][columna][sala] = "R"; // 'R' representa un asiento reservado.
+            return true;
+        } else {
+            return false; // El asiento ya está reservado.
+        }
+    }
+    public String mostrarAsientos(int sala) {
+        StringBuilder asientos = new StringBuilder();
+        for (int i = 0; i < salas.length; i++) {
+            for (int j = 0; j < salas[i].length; j++) {
+                asientos.append(salas[i][j][sala]).append(" ");
+            }
+            asientos.append("\n");
+        }
+        return asientos.toString();
+    }
 }
+

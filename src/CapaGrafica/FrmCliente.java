@@ -13,7 +13,7 @@ import capaLogica.Cine;
  * @author sebas
  */
 public class FrmCliente extends javax.swing.JFrame {
-    Cine cn = new Cine();
+    
 
     /**
      * Creates new form FrmCliente
@@ -113,9 +113,11 @@ public class FrmCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnConsultaActionPerformed
 
     private void btnReservarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReservarActionPerformed
+        this.dispose();
         FrmReserva r1 = new FrmReserva();
         r1.setVisible(true);
         r1.setLocationRelativeTo(this);
+        
     }//GEN-LAST:event_btnReservarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
