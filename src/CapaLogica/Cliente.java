@@ -16,7 +16,7 @@ public class Cliente {
     private String codigoSeguridad;
     private double totalPagado;
     
-    public Cliente(String nombre, String tipoTarjeta, String numeroTarjeta , String fechaVencimiento, String codigoSeguridad){
+    public Cliente(String nombre, String tipoTarjeta, String numeroTarjeta, String fechaVencimiento, String codigoSeguridad){
         this.nombreCliente= nombre;
         this.numeroReservacion = contadorReservaciones++;
         this.tipoTarjeta= tipoTarjeta;
