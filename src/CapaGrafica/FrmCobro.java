@@ -234,8 +234,7 @@ public class FrmCobro extends javax.swing.JFrame {
     }//GEN-LAST:event_CCVActionPerformed
 
     private void N_tarjetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_N_tarjetaActionPerformed
-        // TODO add your handling code here:if (CCV.getText().length()>=3)
-        
+        // TODO add your handling code here:
     }//GEN-LAST:event_N_tarjetaActionPerformed
 
     private void N_tarjetaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_N_tarjetaKeyTyped
