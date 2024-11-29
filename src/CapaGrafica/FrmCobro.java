@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package CapaGrafica;
+
 import CapaLogica.Cliente;
 import java.util.HashSet;
 import java.util.Set;

@@ -169,9 +169,9 @@ public class Cine {
     }
     public void construirAsientos() {
         for (int i = 0; i < profundidad; i++) {
-            for (int j = 0; j < columnas; j++) {
-                for (int k = 0; k < filas; k++) {
-                salas[k][j][i] = "L"; // 'L' representa un asiento libre.
+            for (int j = 0; j < filas; j++) {
+                for (int k = 0; k < columnas; k++) {
+                salas[j][k][i] = "L        "; // 'L' representa un asiento libre.
                 }
             }
         }
@@ -213,8 +213,8 @@ public class Cine {
                 default -> mensaje = "Asiento no valido";
             }
             columna = columna-1;
-        if (salas[fila][columna][sala] == "L") {
-            salas[fila][columna][sala] = "R"; // 'R' representa un asiento reservado.
+        if (salas[fila][columna][sala] == "L        ") {
+            salas[fila][columna][sala] = "R        "; // 'R' representa un asiento reservado.
             return true;
         } else {
             return false; // El asiento ya está reservado.
@@ -222,11 +222,13 @@ public class Cine {
     }
     public String mostrarAsientos(int sala) {
         StringBuilder asientos = new StringBuilder();
-        for (int i = 0; i < salas.length; i++) {
-            for (int j = 0; j < salas[i].length; j++) {
-                asientos.append(salas[i][j][sala]).append(" ");
+        for (int i = 0; i < columnas; i++) {
+            for (int j = 0; j < filas; j++) {
+                asientos.append(salas[j][i][sala]).append(" ");
             }
-            asientos.append("\n");
+            if(i<salas.length-3){
+            asientos.append("\n\n");
+            }
         }
         return asientos.toString();
     }
