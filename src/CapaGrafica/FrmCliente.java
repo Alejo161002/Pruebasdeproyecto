@@ -8,19 +8,27 @@ import capaLogica.Cine;
 
 
 
+
 /**
  *
  * @author sebas
  */
 public class FrmCliente extends javax.swing.JFrame {
-    
+
+    private Cine cine;
+    //private final Cine cn;
 
     /**
      * Creates new form FrmCliente
+     * @param cine
      */
     public FrmCliente() {
         initComponents();
     }
+    public void setCine(Cine cine){
+        this.cine = cine;
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,7 +42,7 @@ public class FrmCliente extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         btnConsulta = new javax.swing.JButton();
         btnReservar = new javax.swing.JButton();
-        btnSalir = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,13 +66,13 @@ public class FrmCliente extends javax.swing.JFrame {
             }
         });
 
-        btnSalir.setBackground(new java.awt.Color(255, 102, 102));
-        btnSalir.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnSalir.setForeground(new java.awt.Color(255, 255, 255));
-        btnSalir.setText("Salir");
-        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+        btnVolver.setBackground(new java.awt.Color(255, 102, 102));
+        btnVolver.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnVolver.setForeground(new java.awt.Color(255, 255, 255));
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalirActionPerformed(evt);
+                btnVolverActionPerformed(evt);
             }
         });
 
@@ -72,21 +80,23 @@ public class FrmCliente extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 129, Short.MAX_VALUE)
-                .addComponent(btnConsulta)
-                .addGap(18, 18, 18)
-                .addComponent(btnReservar)
-                .addGap(146, 146, 146))
             .addGroup(layout.createSequentialGroup()
+                .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnConsulta)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnReservar))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(231, 231, 231)
-                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(193, 193, 193)
-                        .addComponent(jLabel5)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(102, 102, 102)
+                                .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(64, 64, 64)
+                                .addComponent(jLabel5)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -98,8 +108,8 @@ public class FrmCliente extends javax.swing.JFrame {
                     .addComponent(btnReservar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(175, Short.MAX_VALUE))
+                .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(78, Short.MAX_VALUE))
         );
 
         pack();
@@ -110,6 +120,7 @@ public class FrmCliente extends javax.swing.JFrame {
         FrmCartelera f1 = new FrmCartelera();
         f1.setVisible(true);
         f1.setLocationRelativeTo(this);
+        f1.setCine(cine);
     }//GEN-LAST:event_btnConsultaActionPerformed
 
     private void btnReservarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReservarActionPerformed
@@ -117,12 +128,17 @@ public class FrmCliente extends javax.swing.JFrame {
         FrmReserva r1 = new FrmReserva();
         r1.setVisible(true);
         r1.setLocationRelativeTo(this);
+        r1.setCine(cine);
         
     }//GEN-LAST:event_btnReservarActionPerformed
 
-    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         this.dispose();
-    }//GEN-LAST:event_btnSalirActionPerformed
+        FrmAdministrador adm = new FrmAdministrador();
+        adm.setVisible(true);
+        adm.setLocationRelativeTo(this);
+        adm.setCine(cine);
+    }//GEN-LAST:event_btnVolverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,7 +178,7 @@ public class FrmCliente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConsulta;
     private javax.swing.JButton btnReservar;
-    private javax.swing.JButton btnSalir;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
 }

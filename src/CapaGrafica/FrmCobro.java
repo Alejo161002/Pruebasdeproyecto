@@ -10,7 +10,7 @@ import java.util.Set;
 
 public class FrmCobro extends javax.swing.JFrame {
     
-   Cliente client = new Cliente("Sebas", "Visa", "400019239102910299012", "11/12", "123");
+   //Cliente client = new Cliente("Sebas", "Visa", "400019239102910299012", "11/12", "123");
     
     public FrmCobro() {
         initComponents();
@@ -227,7 +227,7 @@ public class FrmCobro extends javax.swing.JFrame {
 
     private void N_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_N_clienteActionPerformed
         // TODO add your handling code here:
-        N_cliente.setText(client.getNombreCliente());
+       // N_cliente.setText(client.getNombreCliente());
         
         
     }//GEN-LAST:event_N_clienteActionPerformed

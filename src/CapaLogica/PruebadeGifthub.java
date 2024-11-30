@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package CapaLogica;
-
+import capaLogica.Cine;
+import CapaGrafica.FrmAdministrador;
 import CapaGrafica.FrmCliente;
 
 /**
@@ -11,14 +12,19 @@ import CapaGrafica.FrmCliente;
  * @author Ale
  */
 public class PruebadeGifthub {
+    
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        FrmCliente c1 = new FrmCliente();
-        c1.setVisible(true);
-        c1.setLocationRelativeTo(null);
+        
+        Cine cn = new Cine();
+        cn.construirAsientos();
+        FrmAdministrador adm = new FrmAdministrador();
+        adm.setVisible(true);
+        adm.setLocationRelativeTo(null);
+        adm.setCine(cn);
     }
     
 }
