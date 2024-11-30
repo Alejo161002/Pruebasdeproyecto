@@ -5,18 +5,27 @@
 package CapaGrafica;
 
 import CapaLogica.Cliente;
-import java.util.HashSet;
-import java.util.Set;
+import java.time.DateTimeException;
+import java.time.LocalDate;
+import javax.swing.JOptionPane;
 
 public class FrmCobro extends javax.swing.JFrame {
-    
-   //Cliente client = new Cliente("Sebas", "Visa", "400019239102910299012", "11/12", "123");
-    
-    public FrmCobro() {
-        initComponents();
         
+        private Cliente cliente;
+    
+        
+        public FrmCobro() {
+        initComponents();
+        txtFechaVencimiento.setText("01-2025"); 
+        CCV.setText("500");
+        this.setTitle("Comprar");
     }
-
+         
+    public void setRegistro(Cliente cliente) {
+        this.cliente = cliente;
+    }
+   
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,18 +39,20 @@ public class FrmCobro extends javax.swing.JFrame {
         buttonGroup2 = new javax.swing.ButtonGroup();
         buttonGroup3 = new javax.swing.ButtonGroup();
         buttonGroup4 = new javax.swing.ButtonGroup();
+        buttonGroup5 = new javax.swing.ButtonGroup();
+        buttonGroup6 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        Visa = new javax.swing.JRadioButton();
+        MasterCard = new javax.swing.JRadioButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         CCV = new javax.swing.JTextField();
-        Vencimiento = new javax.swing.JTextField();
+        txtFechaVencimiento = new javax.swing.JTextField();
         N_tarjeta = new javax.swing.JTextField();
         N_cliente = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        Comprar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
 
@@ -51,19 +62,19 @@ public class FrmCobro extends javax.swing.JFrame {
 
         jLabel2.setText("Nombre de cliente:");
 
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setText("Visa");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup1.add(Visa);
+        Visa.setText("Visa");
+        Visa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                VisaActionPerformed(evt);
             }
         });
 
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setText("MasterCard");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup1.add(MasterCard);
+        MasterCard.setText("MasterCard");
+        MasterCard.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
+                MasterCardActionPerformed(evt);
             }
         });
 
@@ -84,9 +95,9 @@ public class FrmCobro extends javax.swing.JFrame {
             }
         });
 
-        Vencimiento.addActionListener(new java.awt.event.ActionListener() {
+        txtFechaVencimiento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                VencimientoActionPerformed(evt);
+                txtFechaVencimientoActionPerformed(evt);
             }
         });
 
@@ -107,10 +118,10 @@ public class FrmCobro extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Comprar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Comprar.setText("Comprar");
+        Comprar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                ComprarActionPerformed(evt);
             }
         });
 
@@ -123,19 +134,13 @@ public class FrmCobro extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(194, 194, 194)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(124, 124, 124)
@@ -144,14 +149,21 @@ public class FrmCobro extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Vencimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(MasterCard, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtFechaVencimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(38, 38, 38)
+                                        .addComponent(Comprar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(N_tarjeta, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(CCV, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(N_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Visa, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(CCV, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))
                         .addGap(0, 0, Short.MAX_VALUE))))
@@ -163,43 +175,35 @@ public class FrmCobro extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel6))
-                .addGap(28, 28, 28)
+                .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(N_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jLabel2)
+                    .addComponent(N_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(Visa)
+                    .addComponent(MasterCard))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Vencimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFechaVencimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel3)
                     .addComponent(N_tarjeta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CCV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addGap(26, 26, 26)
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                .addGap(40, 40, 40))
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CCV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16)
+                .addComponent(Comprar, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
+                .addGap(20, 20, 20))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
-
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     private void CCVKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CCVKeyTyped
         if (CCV.getText().length()>=3)
@@ -213,7 +217,7 @@ public class FrmCobro extends javax.swing.JFrame {
     }//GEN-LAST:event_CCVActionPerformed
 
     private void N_tarjetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_N_tarjetaActionPerformed
-        // TODO add your handling code here:if (CCV.getText().length()>=3)
+        // TODO add your handling code here:
         
     }//GEN-LAST:event_N_tarjetaActionPerformed
 
@@ -226,67 +230,87 @@ public class FrmCobro extends javax.swing.JFrame {
     }//GEN-LAST:event_N_tarjetaKeyTyped
 
     private void N_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_N_clienteActionPerformed
-        // TODO add your handling code here:
-       // N_cliente.setText(client.getNombreCliente());
-        
-        
+   
     }//GEN-LAST:event_N_clienteActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void VencimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VencimientoActionPerformed
+    private void ComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComprarActionPerformed
         // TODO add your handling code here:
         
         
-    }//GEN-LAST:event_VencimientoActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmCobro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmCobro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmCobro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmCobro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+      String fechaTexto = txtFechaVencimiento.getText();
+        String fechaRegex = "^(0[1-9]|1[0-2])-(\\d{4})$"; 
+        if (!fechaTexto.matches(fechaRegex)) {
+            JOptionPane.showMessageDialog(this, "El formato de fecha debe ser MM-YYYY.");
+            return;
         }
-        //</editor-fold>
+        String[] partesFecha = fechaTexto.split("-");
+        int mes = Integer.parseInt(partesFecha[0]);
+        int anio = Integer.parseInt(partesFecha[1]);
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run(){
-                new FrmCobro().setVisible(true);
+        LocalDate fechaVencimiento;
+        try {
+            fechaVencimiento = LocalDate.of(anio, mes, 1); 
+            if (fechaVencimiento.isBefore(LocalDate.now())) {
+                JOptionPane.showMessageDialog(this, "La fecha de vencimiento debe ser futura.");
+                return;
             }
-        });
+        } catch (DateTimeException e) {
+            JOptionPane.showMessageDialog(this, "Error en la fecha: " + e.getMessage());
+            return;
+        }
+
+        String numeroTarjeta = N_tarjeta.getText().trim();
+        
+        if (numeroTarjeta.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El número de tarjeta no puede estar vacío.");
+            return;
+        }
+
+        String tipoTarjeta = Visa.isSelected() ? "Visa" : "MasterCard";
+        
+        try {
+            Cliente miCliente = new Cliente(tipoTarjeta, numeroTarjeta, fechaTexto, CCV.getText());
+            JOptionPane.showMessageDialog(this, "Compra realizada con éxito.");
+            this.dispose(); 
+            
+            Factura fcp = new Factura(miCliente); 
+            fcp.setVisible(true);
+            fcp.setLocationRelativeTo(null);
+            
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+        catch (DateTimeException e) {
+            JOptionPane.showMessageDialog(this,"Error en la fecha: " + e.getMessage());
+            return;
+    }//GEN-LAST:event_ComprarActionPerformed
     }
+    private void txtFechaVencimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaVencimientoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFechaVencimientoActionPerformed
+
+    private void MasterCardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MasterCardActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MasterCardActionPerformed
+
+    private void VisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VisaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_VisaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField CCV;
+    private javax.swing.JButton Comprar;
+    private javax.swing.JRadioButton MasterCard;
     private javax.swing.JTextField N_cliente;
     private javax.swing.JTextField N_tarjeta;
-    private javax.swing.JTextField Vencimiento;
+    private javax.swing.JRadioButton Visa;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.ButtonGroup buttonGroup4;
-    private javax.swing.JButton jButton1;
+    private javax.swing.ButtonGroup buttonGroup5;
+    private javax.swing.ButtonGroup buttonGroup6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -294,7 +318,6 @@ public class FrmCobro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JTextField txtFechaVencimiento;
     // End of variables declaration//GEN-END:variables
 }
