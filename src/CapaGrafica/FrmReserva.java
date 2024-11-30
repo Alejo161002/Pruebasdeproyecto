@@ -470,6 +470,7 @@ public class FrmReserva extends javax.swing.JFrame {
         adm.setVisible(true);
         adm.setLocationRelativeTo(this);
         adm.setCine(cine);
+        adm.setCliente(cliente);
     }//GEN-LAST:event_btnVolverActionPerformed
 
     /**
