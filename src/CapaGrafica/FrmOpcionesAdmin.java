@@ -5,6 +5,7 @@
 package CapaGrafica;
 
 import capaLogica.Cine;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -76,6 +77,11 @@ public class FrmOpcionesAdmin extends javax.swing.JFrame {
         });
 
         btnReporteAsientos.setText("Reporte de asientos");
+        btnReporteAsientos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReporteAsientosActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 36)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(153, 0, 153));
@@ -137,6 +143,7 @@ public class FrmOpcionesAdmin extends javax.swing.JFrame {
         FrmAdministrarCartelera adm = new FrmAdministrarCartelera();
         adm.setVisible(true);
         adm.setLocationRelativeTo(this);
+        adm.setCine(cine);
     }//GEN-LAST:event_btnDefinirCarteleraActionPerformed
 
     private void btnReporteDeIngresosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteDeIngresosActionPerformed
@@ -151,6 +158,12 @@ public class FrmOpcionesAdmin extends javax.swing.JFrame {
         salas.setCine(cine);
         
     }//GEN-LAST:event_btnMostrarEstadoSalasActionPerformed
+
+    private void btnReporteAsientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteAsientosActionPerformed
+        int opcion = Integer.parseInt(JOptionPane.showInputDialog("Ingrese numero de sala"));
+        
+        JOptionPane.showMessageDialog(this, "Asientos reservados: "+cine.numeroAsientosReservados(opcion)+" en sala"+opcion);
+    }//GEN-LAST:event_btnReporteAsientosActionPerformed
 
     /**
      * @param args the command line arguments
