@@ -10,4 +10,10 @@ package CapaLogica;
  */
 public class Administrador {
     public static int contadorDeIntentos=0;
+    public static int ingreso;
+    
+    public boolean validarClave(String clave) {
+    
+        
+    }
 }
