@@ -4,6 +4,9 @@
  */
 package capaLogica;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  *
  * @author sebas
@@ -26,46 +29,16 @@ public class Cine {
     public Cine(){
         salas = new String[filas][columnas][profundidad];
     }
-    public void peliculas(int numeroSala) {
+    public void peliculas() {
         pelicula[0] = "Italia 90";
         pelicula[1] = "Rio 2";
         pelicula[2] = "X-Men";
-        this.numeroSala = numeroSala;
+        
     }
     public void cambiarCartelera(String nombrePelicula, int sala){
         pelicula[sala-1] = nombrePelicula;
     }
-//    public String vaciarSalas(){
-//        String hilera ="";
-//        for (int i = 0; i<profundidad;i++){
-//            if(i==0){
-//            for (int j= 0; j < columnas; j++) {
-//                for (int k = 0; k < filas; k++) {
-//                    if(k==0){
-//                        hilera += salas [k][j][this.numeroSala] = "&";
-//                    }
-//                    else{
-//                            hilera += salas [k][j][this.numeroSala] = "        &";
-//                    }
-//                        }
-//                if(j<7){
-//                hilera += "\n\n";
-//                }
-//                    }
-//                }
-//        }
-//        return hilera;
-//    }
-//
-//    public String validacionAsientos(int fila, int columna, int sala) {
-//        String asientoDisponible = "cliente";
-//        if (salas[fila][columna][sala] == null) {
-//            salas[fila][columna][sala] = asientoDisponible;
-//            return "Asiento reservado";
-//        }else{
-//            return "asiento ocupado";
-//        }
-//    }
+
     public String imprimirCartelera(){
         String hilera = "Peliculas:\t"+pelicula[0]+"\t"+pelicula[1]+"\t"+pelicula[2]+"\n"+
                 "Cliente regular: ₡"+CLIENTE_REGULAR+"\t₡"+CLIENTE_REGULAR+"\t₡"+CLIENTE_REGULAR+
@@ -149,6 +122,18 @@ public class Cine {
             }
         }
         return asientos.toString();
+    }
+    
+    public boolean validarContrasena(String contrasena){
+        boolean estado = false;
+        if(contrasena.matches("([0-9]{4})")){
+            estado = true;
+        }
+        else{
+            estado =  false;
+        }
+        
+        return estado;
     }
 }
 

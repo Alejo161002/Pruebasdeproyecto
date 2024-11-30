@@ -118,8 +118,8 @@ public class FrmAdministrador extends javax.swing.JFrame {
                 return;
             }
         
-        int clave = Integer.parseInt(JOptionPane.showInputDialog("Ingrese clave de ingreso"));
-        if(clave==0000){
+        String clave = (JOptionPane.showInputDialog("Ingrese clave de ingreso"));
+        if(cine.validarContrasena(clave) == true){
             contadorDeIntentos++;
             if(contadorDeIntentos==3){
                 return;
@@ -129,6 +129,9 @@ public class FrmAdministrador extends javax.swing.JFrame {
             adm.setLocationRelativeTo(this);
             adm.setCine(cine);
             this.dispose();
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Clave invalida");
         }
     }//GEN-LAST:event_btnCarteleraActionPerformed
 

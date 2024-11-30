@@ -273,7 +273,7 @@ public class FrmCobro extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Compra realizada con éxito.");
             this.dispose(); 
             
-            Factura fcp = new Factura(miCliente); 
+            Factura fcp = new Factura(); 
             fcp.setVisible(true);
             fcp.setLocationRelativeTo(null);
             

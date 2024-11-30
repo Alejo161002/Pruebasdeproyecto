@@ -21,6 +21,7 @@ public class PruebadeGifthub {
         
         Cine cn = new Cine();
         cn.construirAsientos();
+        cn.peliculas();
         FrmAdministrador adm = new FrmAdministrador();
         adm.setVisible(true);
         adm.setLocationRelativeTo(null);

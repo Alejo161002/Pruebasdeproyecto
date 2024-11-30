@@ -95,7 +95,7 @@ public class FrmCartelera extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
-        cn.peliculas(1);
+        
         String mensaje = cn.imprimirCartelera();
         txtResultado.setText(mensaje);
     }//GEN-LAST:event_btnConsultarActionPerformed
