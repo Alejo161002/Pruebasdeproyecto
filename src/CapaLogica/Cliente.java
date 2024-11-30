@@ -7,8 +7,7 @@ import java.util.regex.Pattern;
 
 
 public class Cliente {
-    private static int contadorReservaciones=1000;
-    private String nombreCliente;
+    public static int contadorReservaciones=1000;
     private int numeroReservacion;
     private String tipoTarjeta;
     private String numeroTarjeta;
@@ -16,33 +15,20 @@ public class Cliente {
     private String codigoSeguridad;
     private double totalPagado;
     
-    public Cliente(String nombre, String tipoTarjeta, String numeroTarjeta, String fechaVencimiento, String codigoSeguridad){
-        this.nombreCliente= nombre;
+    public Cliente(String tipoTarjeta, String numeroTarjeta, String fechaVencimiento, String codigoSeguridad){
         this.numeroReservacion = contadorReservaciones++;
         this.tipoTarjeta= tipoTarjeta;
         this.numeroTarjeta=numeroTarjeta;
-        this.fechaVencimiento = LocalDate.parse(fechaVencimiento, DateTimeFormatter.ofPattern("MM/yyyy"));
+        this.fechaVencimiento = LocalDate.parse(fechaVencimiento, DateTimeFormatter.ofPattern("MM-yyyy"));
         this.codigoSeguridad = codigoSeguridad;
         this.totalPagado = 0.0;
         validarDatos();
         
 }
-    public String getNombreCliente() {
-        return nombreCliente;
-    }
-
-    public void setNombreCliente(String nombreCliente) {
-        this.nombreCliente = nombreCliente;
-    }
-    
-
     public String getTipoTarjeta() {
         return tipoTarjeta;
     }
 
-    public String getNumeroTarjeta() {
-        return numeroTarjeta;
-    }
 
     public LocalDate getFechaVencimiento() {
         return fechaVencimiento;
@@ -54,32 +40,25 @@ public class Cliente {
     
     private void validarDatos(){
         validarTipoTarjeta();
-        validarFechaVencimiento();
         validarCodigoSeguridad();
         validarNumeroTarjeta();
     }
     
-    private void validarTipoTarjeta(){
+    public void validarTipoTarjeta(){
         if(!tipoTarjeta.equals("Visa")&& !tipoTarjeta.equals("MasterCard")){
             throw new IllegalArgumentException("Tipo de tarjeta no valido.Unicamente se acepta Visa o MasterCard.");
         }
     }
     
-    private void validarFechaVencimiento(){
-        if(fechaVencimiento.isBefore(LocalDate.now())){
-            throw new IllegalArgumentException("La fecha de venbcimiento debe ser posterior a la fecha actual.");
     
-    }
-    }
-    
-    private void validarCodigoSeguridad(){
+    public void validarCodigoSeguridad(){
     if(codigoSeguridad.length() != 3||
             !codigoSeguridad.matches("\\d{3}")){
             throw new IllegalArgumentException("El codigo de seguridad debe ser un numero de 3 digitos.");
         }
     }
-
-private void validarNumeroTarjeta() {
+    
+public void validarNumeroTarjeta() {
     String Visa = "^4[0-9]{15}$"; 
     String MasterCard = "^(5[1-5][0-9]{14})$"; 
 
@@ -87,7 +66,7 @@ private void validarNumeroTarjeta() {
         if (!Pattern.matches(Visa,numeroTarjeta)) {
             throw new IllegalArgumentException("Numero Visa Invalido");
         }
-    } else if (tipoTarjeta.equals("Master Card")) {
+    } else if (tipoTarjeta.equals("MasterCard")) {
         if (!Pattern.matches(MasterCard, numeroTarjeta)) {
             throw new IllegalArgumentException("Numero de tarjeta MasterCard Invalido");
         }
@@ -117,31 +96,6 @@ private void validarNumeroTarjeta() {
     public void realizarPago(double monto){
         totalPagado += monto;
     }
-    
-    @Override
-    public String toString(){
-        return "Cliente{" +
-                "nombre='" + nombreCliente + '\'' +
-                ", numeroReservacion=" + numeroReservacion +
-                ", tipoTarjeta='" + tipoTarjeta + '\'' +
-                ", totalPagado=" + totalPagado +
-                '}';
-    }
-    
-    public static void main(String[] args){
-        try {
-            Cliente cliente1 = new Cliente(
-                    "Juan Pérez",
-                    "Visa",
-                    "4552720412345678",
-                    "12/2025",
-                    "123"
-            );
-            System.out.println(cliente1);
-        } catch (IllegalArgumentException e) {
-            System.out.println("Error al crear el cliente: " + e.getMessage());
-        }
-    }
 }
-
+    
 
