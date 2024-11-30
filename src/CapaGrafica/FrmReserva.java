@@ -5,6 +5,7 @@
 package CapaGrafica;
 
 
+import CapaLogica.Cliente;
 import capaLogica.Cine;
 import static capaLogica.Cine.contador;
 import javax.swing.ButtonGroup;
@@ -18,6 +19,7 @@ import javax.swing.JOptionPane;
 public class FrmReserva extends javax.swing.JFrame {
 
     private Cine cine;
+    private Cliente cliente;
     //Cine cine = new Cine();
     
     public FrmReserva() {
@@ -34,7 +36,10 @@ public class FrmReserva extends javax.swing.JFrame {
     public void setCine(Cine cine){
         this.cine = cine;
     }
-
+    
+    public void setCliente(Cliente cliente){
+        this.cliente = cliente;
+    }
     
 
     /**
@@ -497,4 +502,8 @@ public class FrmReserva extends javax.swing.JFrame {
     private javax.swing.JTextArea txtResultado;
     private javax.swing.JTextField txtninnos;
     // End of variables declaration//GEN-END:variables
+
+    void setCliente(Cliente cliente) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
