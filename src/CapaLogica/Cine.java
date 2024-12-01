@@ -124,16 +124,6 @@ public class Cine {
         return asientos.toString();
     }
     
-    public boolean validarContrasena(String contrasena){
-        boolean estado = false;
-        if(contrasena.matches("([0-9]{4})")){
-            estado = true;
-        }
-        else{
-            estado =  false;
-        }
-        
-        return estado;
-    }
+    
 }
 

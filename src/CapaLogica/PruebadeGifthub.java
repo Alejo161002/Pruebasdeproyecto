@@ -18,7 +18,6 @@ public class PruebadeGifthub {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
         Cine cn = new Cine();
         cn.construirAsientos();
         cn.peliculas();

@@ -392,6 +392,7 @@ public class FrmReserva extends javax.swing.JFrame {
         FrmCobro fc= new FrmCobro();
         fc.setVisible(true);
         fc.setLocationRelativeTo(this);
+        fc.setCine(cine);
     }//GEN-LAST:event_btnComprarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -503,7 +504,5 @@ public class FrmReserva extends javax.swing.JFrame {
     private javax.swing.JTextField txtninnos;
     // End of variables declaration//GEN-END:variables
 
-    void setCliente(Cliente cliente) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+   
 }

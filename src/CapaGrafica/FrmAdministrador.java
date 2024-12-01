@@ -4,6 +4,7 @@
  */
 package CapaGrafica;
 
+import CapaLogica.Administrador;
 import static CapaLogica.Administrador.contadorDeIntentos;
 import capaLogica.Cine;
 import javax.swing.JOptionPane;
@@ -14,6 +15,8 @@ import javax.swing.JOptionPane;
  */
 public class FrmAdministrador extends javax.swing.JFrame {
     private Cine cine;
+    Administrador admin = new Administrador();
+   
 
     /**
      * Creates new form FrmAdministrador
@@ -26,6 +29,8 @@ public class FrmAdministrador extends javax.swing.JFrame {
     public void setCine(Cine cn) {
         this.cine = cn;
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -119,7 +124,7 @@ public class FrmAdministrador extends javax.swing.JFrame {
             }
         
         String clave = (JOptionPane.showInputDialog("Ingrese clave de ingreso"));
-        if(cine.validarContrasena(clave) == true){
+        if(admin.validarContrasena(clave) == true){
             contadorDeIntentos++;
             if(contadorDeIntentos==3){
                 return;

@@ -4,6 +4,7 @@
  */
 package CapaGrafica;
 
+import CapaLogica.Administrador;
 import capaLogica.Cine;
 import javax.swing.JOptionPane;
 
@@ -14,6 +15,7 @@ import javax.swing.JOptionPane;
 public class FrmOpcionesAdmin extends javax.swing.JFrame {
 
     private Cine cine;
+    private Administrador admin;
 
     /**
      * Creates new form AdministrarCartelera
@@ -25,6 +27,7 @@ public class FrmOpcionesAdmin extends javax.swing.JFrame {
     public void setCine(Cine cine){
      this.cine = cine;   
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -136,6 +139,7 @@ public class FrmOpcionesAdmin extends javax.swing.JFrame {
         adm.setVisible(true);
         adm.setLocationRelativeTo(this);
         adm.setCine(cine);
+        
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnDefinirCarteleraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDefinirCarteleraActionPerformed
