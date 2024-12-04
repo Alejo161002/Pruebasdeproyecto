@@ -50,9 +50,9 @@
                           <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="rbtnItalia" alignment="0" min="-2" pref="98" max="-2" attributes="0"/>
-                                  <Component id="rbtnRio" alignment="0" min="-2" pref="98" max="-2" attributes="0"/>
-                                  <Component id="rbtnX" alignment="0" min="-2" pref="98" max="-2" attributes="0"/>
+                                  <Component id="lblPelicula1" alignment="0" min="-2" pref="98" max="-2" attributes="0"/>
+                                  <Component id="lblPelicula2" alignment="0" min="-2" pref="98" max="-2" attributes="0"/>
+                                  <Component id="lblPelicula3" alignment="0" min="-2" pref="98" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
@@ -155,15 +155,15 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
-                              <Component id="rbtnX" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblPelicula3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                              <Component id="rbtnItalia" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblPelicula1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="rbtnRio" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblPelicula2" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -197,29 +197,29 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JRadioButton" name="rbtnItalia">
+    <Component class="javax.swing.JRadioButton" name="lblPelicula1">
       <Properties>
         <Property name="selected" type="boolean" value="true"/>
         <Property name="text" type="java.lang.String" value="Italia 90"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbtnItaliaActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="lblPelicula1ActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JRadioButton" name="rbtnRio">
+    <Component class="javax.swing.JRadioButton" name="lblPelicula2">
       <Properties>
         <Property name="text" type="java.lang.String" value="Rio 2"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbtnRioActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="lblPelicula2ActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JRadioButton" name="rbtnX">
+    <Component class="javax.swing.JRadioButton" name="lblPelicula3">
       <Properties>
         <Property name="text" type="java.lang.String" value="X-MEN"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbtnXActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="lblPelicula3ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">

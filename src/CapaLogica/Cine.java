@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
  */
 public class Cine {
 
-    private String[] pelicula = new String [3];
+    public String[] pelicula = new String [3];
     private int filas = 10;
     private int columnas = 8;
     private int profundidad = 3;

@@ -27,19 +27,25 @@ public class FrmReserva extends javax.swing.JFrame {
         
         
          ButtonGroup grupo = new ButtonGroup();
-        grupo.add(rbtnItalia);
-        grupo.add(rbtnRio);
-        grupo.add(rbtnX);
+        grupo.add(lblPelicula1);
+        grupo.add(lblPelicula2);
+        grupo.add(lblPelicula3);
         
         
     }
     public void setCine(Cine cine){
         this.cine = cine;
+        lblPelicula1.setText(cine.pelicula[0]);
+        lblPelicula2.setText(cine.pelicula[1]);
+        lblPelicula3.setText(cine.pelicula[2]);
+        
     }
     
     public void setCliente(Cliente cliente){
         this.cliente = cliente;
     }
+    
+    
     
 
     /**
@@ -51,9 +57,9 @@ public class FrmReserva extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        rbtnItalia = new javax.swing.JRadioButton();
-        rbtnRio = new javax.swing.JRadioButton();
-        rbtnX = new javax.swing.JRadioButton();
+        lblPelicula1 = new javax.swing.JRadioButton();
+        lblPelicula2 = new javax.swing.JRadioButton();
+        lblPelicula3 = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -85,25 +91,25 @@ public class FrmReserva extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
 
-        rbtnItalia.setSelected(true);
-        rbtnItalia.setText("Italia 90");
-        rbtnItalia.addActionListener(new java.awt.event.ActionListener() {
+        lblPelicula1.setSelected(true);
+        lblPelicula1.setText("Italia 90");
+        lblPelicula1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbtnItaliaActionPerformed(evt);
+                lblPelicula1ActionPerformed(evt);
             }
         });
 
-        rbtnRio.setText("Rio 2");
-        rbtnRio.addActionListener(new java.awt.event.ActionListener() {
+        lblPelicula2.setText("Rio 2");
+        lblPelicula2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbtnRioActionPerformed(evt);
+                lblPelicula2ActionPerformed(evt);
             }
         });
 
-        rbtnX.setText("X-MEN");
-        rbtnX.addActionListener(new java.awt.event.ActionListener() {
+        lblPelicula3.setText("X-MEN");
+        lblPelicula3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbtnXActionPerformed(evt);
+                lblPelicula3ActionPerformed(evt);
             }
         });
 
@@ -232,9 +238,9 @@ public class FrmReserva extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(rbtnItalia, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(rbtnRio, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(rbtnX, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(lblPelicula1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblPelicula2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblPelicula3, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -314,14 +320,14 @@ public class FrmReserva extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(97, 97, 97)
-                                .addComponent(rbtnX))
+                                .addComponent(lblPelicula3))
                             .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jLabel6)
                                 .addGap(12, 12, 12)
-                                .addComponent(rbtnItalia)
+                                .addComponent(lblPelicula1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rbtnRio)))
+                                .addComponent(lblPelicula2)))
                         .addGap(18, 18, 18)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -348,17 +354,17 @@ public class FrmReserva extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void rbtnItaliaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnItaliaActionPerformed
+    private void lblPelicula1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblPelicula1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rbtnItaliaActionPerformed
+    }//GEN-LAST:event_lblPelicula1ActionPerformed
 
-    private void rbtnRioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnRioActionPerformed
+    private void lblPelicula2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblPelicula2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rbtnRioActionPerformed
+    }//GEN-LAST:event_lblPelicula2ActionPerformed
 
-    private void rbtnXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnXActionPerformed
+    private void lblPelicula3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblPelicula3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rbtnXActionPerformed
+    }//GEN-LAST:event_lblPelicula3ActionPerformed
 
     private void txtAdultoRegularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAdultoRegularActionPerformed
         // TODO add your handling code here:
@@ -375,13 +381,13 @@ public class FrmReserva extends javax.swing.JFrame {
     private void btnMostrarAsientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarAsientosActionPerformed
         
         int numeroSala=1;
-        if(rbtnItalia.isSelected()){
+        if(lblPelicula1.isSelected()){
             numeroSala=0;
         }
-        if(rbtnRio.isSelected()){
+        if(lblPelicula2.isSelected()){
             numeroSala=1;
         }
-        if(rbtnX.isSelected()){
+        if(lblPelicula3.isSelected()){
             numeroSala=2;
         }
         txtResultado.setText(cine.mostrarAsientos(numeroSala));
@@ -401,13 +407,13 @@ public class FrmReserva extends javax.swing.JFrame {
 
     private void btnSelecionarAsientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarAsientosActionPerformed
         int numeroSala=0;
-        if(rbtnItalia.isSelected()){
+        if(lblPelicula1.isSelected()){
             numeroSala=0;
         }
-        if(rbtnRio.isSelected()){
+        if(lblPelicula2.isSelected()){
             numeroSala=1;
         }
-        if(rbtnX.isSelected()){
+        if(lblPelicula3.isSelected()){
             numeroSala=2;
         }
         char [] asientos;
@@ -495,9 +501,9 @@ public class FrmReserva extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JRadioButton rbtnItalia;
-    private javax.swing.JRadioButton rbtnRio;
-    private javax.swing.JRadioButton rbtnX;
+    private javax.swing.JRadioButton lblPelicula1;
+    private javax.swing.JRadioButton lblPelicula2;
+    private javax.swing.JRadioButton lblPelicula3;
     private javax.swing.JTextField txtAdultoMayor;
     private javax.swing.JTextField txtAdultoRegular;
     private javax.swing.JTextArea txtResultado;
