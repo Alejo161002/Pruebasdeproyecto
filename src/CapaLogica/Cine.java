@@ -17,6 +17,12 @@ public class Cine {
     private int filas = 10;
     private int columnas = 8;
     private int profundidad = 3;
+    public static String numeroDeEntradas="";
+    public static String asientosReservados="";
+    public static int totalPagado=0;
+    public static int totalPagadoSala1=0;
+    public static int totalPagadoSala2=0;
+    public static int totalPagadoSala3=0;
     public String[][][] salas; //= new String[filas][columnas][profundidad];
     public static int numeroSala = 0;
     public static  int contador = 0;
@@ -34,8 +40,12 @@ public class Cine {
         pelicula[0] = "Italia 90";
         pelicula[1] = "Rio 2";
         pelicula[2] = "X-Men";
-        
     }
+    public String getPelicula(){
+        String hilera = "Pelicula: "+pelicula[numeroSala];
+        return hilera;
+    }
+    
     public void cambiarCartelera(String nombrePelicula, int sala){
         pelicula[sala-1] = nombrePelicula;
     }

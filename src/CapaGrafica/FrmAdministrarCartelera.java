@@ -70,6 +70,7 @@ public class FrmAdministrarCartelera extends javax.swing.JFrame {
         });
 
         txtResultado.setEditable(false);
+        txtResultado.setBackground(new java.awt.Color(255, 255, 255));
         txtResultado.setColumns(20);
         txtResultado.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
         txtResultado.setRows(5);
@@ -173,13 +174,16 @@ public class FrmAdministrarCartelera extends javax.swing.JFrame {
     }//GEN-LAST:event_txtSalaActionPerformed
 
     private void btnAgregarPeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarPeliculaActionPerformed
+        
         int sala = Integer.parseInt(txtSala.getText());
         String nombrePelicula = txtNombrePelicula.getText();
         String horaDeInicio = txtHoraDeInicio.getText();
         
+        
         cine.cambiarCartelera(nombrePelicula, sala);
         
         JOptionPane.showMessageDialog(this, nombrePelicula+" añadida a cartelera en sala: "+sala);
+       
         
         
         

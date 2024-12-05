@@ -6,9 +6,12 @@ package CapaGrafica;
 
 import capaLogica.Cine;
 import static capaLogica.Cine.contador;
+import static capaLogica.Cine.numeroDeEntradas;
 
 import static capaLogica.Cine.numeroDeReservacion;
+import static capaLogica.Cine.asientosReservados;
 import static capaLogica.Cine.numeroSala;
+import static capaLogica.Cine.totalPagado;
 
 /**
  *
@@ -16,24 +19,32 @@ import static capaLogica.Cine.numeroSala;
  */
 public class FrmFactura extends javax.swing.JFrame {
     private Cine cine;
+    
+
     public FrmFactura(String numeroReservacion, String nombreCliente, String tipoTarjeta, 
-                      String numeroTarjeta, String fechaVencimiento, String codigoSeguridad) {
+                      String numeroTarjeta, String fechaVencimiento, String codigoSeguridad,String pelicula) {
         initComponents();
-                StringBuilder detalles = new StringBuilder();
-        detalles.append("\tCine \"XXXXX\" ").append(numeroReservacion).append("\n\n");
+        StringBuilder detalles = new StringBuilder();
+        detalles.append("\t\tCine \"XXXXX\" ").append("\n\n");
         detalles.append("Número de reservación: ").append(numeroDeReservacion++).append("\n");
-        detalles.append("Fecha: ").append(numeroReservacion).append("\n");
+        detalles.append("Fecha: ").append("mañana").append("\n");
         detalles.append("Nombre del Cliente: ").append(nombreCliente).append("\n");
         detalles.append("Tarjeta "+tipoTarjeta+" No.: **** **** **** ").append(numeroTarjeta.substring(numeroTarjeta.length() - 4)).append("\n\n");
         detalles.append("Sala No. ").append(numeroSala+1).append("\n");
-        detalles.append("Pelicula ").append(cine.pelicula).append("\n");
-
-         jTextArea1.setText(detalles.toString());
+        detalles.append(pelicula).append("").append("\n");
+        detalles.append("Tiquetes comprados: "+numeroDeEntradas).append("\n");
+        detalles.append("Asientos reservados: "+asientosReservados).append("\n\n\n");
+        detalles.append("Total pagado: "+totalPagado).append("\n");
+        detalles.append("¡Que disfrute su película!");
+        
+        jTextArea1.setText(detalles.toString());
         jTextArea1.setEditable(false);
     }
-    public void setCine(Cine cine){
+        public void setCine(Cine cine){
         this.cine = cine;
+        
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -46,16 +57,15 @@ public class FrmFactura extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        jLabel1 = new javax.swing.JLabel();
         btnVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jTextArea1.setEditable(false);
+        jTextArea1.setBackground(new java.awt.Color(255, 255, 255));
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
-
-        jLabel1.setText("Numero de Compra");
 
         btnVolver.setBackground(new java.awt.Color(255, 102, 102));
         btnVolver.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -72,23 +82,18 @@ public class FrmFactura extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnVolver)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(19, 19, 19)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(48, 48, 48)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(324, 324, 324)
+                        .addComponent(btnVolver))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(7, 7, 7)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(35, 35, 35)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -105,6 +110,9 @@ public class FrmFactura extends javax.swing.JFrame {
         cobro.setLocationRelativeTo(this);
         cobro.setCine(cine);
         contador=0;
+        totalPagado = 0;
+        numeroDeEntradas = "";
+        asientosReservados = "";
     }//GEN-LAST:event_btnVolverActionPerformed
 
     /**
@@ -155,7 +163,6 @@ public class FrmFactura extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnVolver;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables

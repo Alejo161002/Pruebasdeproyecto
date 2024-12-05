@@ -7,8 +7,17 @@ package CapaGrafica;
 
 import CapaLogica.Cliente;
 import capaLogica.Cine;
+import static capaLogica.Cine.ADULTO_MAYOR;
+import static capaLogica.Cine.CLIENTE_REGULAR;
+import static capaLogica.Cine.NINNOS;
 import static capaLogica.Cine.contador;
 import static capaLogica.Cine.numeroSala;
+import static capaLogica.Cine.asientosReservados;
+import static capaLogica.Cine.totalPagadoSala1;
+import static capaLogica.Cine.totalPagadoSala2;
+import static capaLogica.Cine.totalPagadoSala3;
+import static capaLogica.Cine.numeroDeEntradas;
+import static capaLogica.Cine.totalPagado;
 import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 
@@ -40,11 +49,16 @@ public class FrmReserva extends javax.swing.JFrame {
         lblPelicula2.setText(cine.pelicula[1]);
         lblPelicula3.setText(cine.pelicula[2]);
         
+        
     }
     
     public void setCliente(Cliente cliente){
         this.cliente = cliente;
     }
+    
+    int entradasRegulares=0;
+    int entradasMayores=0;
+    int entradasNinnos=0;
     
     
     
@@ -83,7 +97,6 @@ public class FrmReserva extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
         btnSelecionarAsientos = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
@@ -146,6 +159,8 @@ public class FrmReserva extends javax.swing.JFrame {
 
         jLabel5.setText("(Total máximo: 4)");
 
+        txtResultado.setEditable(false);
+        txtResultado.setBackground(new java.awt.Color(255, 255, 255));
         txtResultado.setColumns(20);
         txtResultado.setRows(5);
         jScrollPane1.setViewportView(txtResultado);
@@ -185,13 +200,6 @@ public class FrmReserva extends javax.swing.JFrame {
         jLabel15.setText("H");
 
         jLabel16.setText("G");
-
-        jButton2.setText("vaciar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
 
         btnSelecionarAsientos.setText("Seleccionar asientos");
         btnSelecionarAsientos.addActionListener(new java.awt.event.ActionListener() {
@@ -269,9 +277,7 @@ public class FrmReserva extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnMostrarAsientos)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton2)
-                        .addGap(18, 18, 18)
+                        .addGap(108, 108, 108)
                         .addComponent(btnComprar))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
@@ -343,7 +349,6 @@ public class FrmReserva extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnMostrarAsientos)
-                    .addComponent(jButton2)
                     .addComponent(btnComprar))
                 .addGap(21, 21, 21))
         );
@@ -398,10 +403,6 @@ public class FrmReserva extends javax.swing.JFrame {
         fc.setCine(cine);
     }//GEN-LAST:event_btnComprarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        txtResultado.setText(" ");
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     private void btnSelecionarAsientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarAsientosActionPerformed
         int numeroSala=0;
         if(lblPelicula1.isSelected()){
@@ -418,9 +419,22 @@ public class FrmReserva extends javax.swing.JFrame {
         char si =' ';
         int no = 0;
         int suma = 0;
-        int entradasRegulares = Integer.parseInt(txtAdultoRegular.getText());
-        int entradasMayores = Integer.parseInt(txtAdultoMayor.getText());
-        int entradasNinnos = Integer.parseInt(txtninnos.getText());
+        entradasRegulares = Integer.parseInt(txtAdultoRegular.getText());
+        totalPagado=totalPagado+(entradasRegulares*CLIENTE_REGULAR);
+        entradasMayores = Integer.parseInt(txtAdultoMayor.getText());
+        totalPagado= totalPagado+(entradasMayores*ADULTO_MAYOR);
+        entradasNinnos = Integer.parseInt(txtninnos.getText());
+        totalPagado=totalPagado+(entradasNinnos*NINNOS);
+        if(numeroSala==0){
+        totalPagadoSala1+=totalPagado;
+        }
+        if(numeroSala==1){
+        totalPagadoSala2+=totalPagado;
+        }
+        if(numeroSala==2){
+        totalPagadoSala3+=totalPagado;
+        }
+        numeroDeEntradas = txtAdultoRegular.getText()+" Regulares "+txtAdultoMayor.getText()+", adulto mayor "+txtninnos.getText()+", niños";
         suma = entradasRegulares+entradasMayores+entradasNinnos;
         int j=0;
         if(suma<5){
@@ -433,6 +447,7 @@ public class FrmReserva extends javax.swing.JFrame {
             }
         String mensaje;
         mensaje = JOptionPane.showInputDialog("Ingrese el asiento");
+        asientosReservados += mensaje+",";
         asientos= mensaje.toCharArray();
         si = asientos[0];
         temp = asientos[1];
@@ -480,7 +495,6 @@ public class FrmReserva extends javax.swing.JFrame {
     private javax.swing.JButton btnMostrarAsientos;
     private javax.swing.JButton btnSelecionarAsientos;
     private javax.swing.JButton btnVolver;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

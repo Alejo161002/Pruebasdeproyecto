@@ -42,6 +42,7 @@ public class FrmCartelera extends javax.swing.JFrame {
         setBackground(new java.awt.Color(204, 255, 255));
 
         txtResultado.setEditable(false);
+        txtResultado.setBackground(new java.awt.Color(255, 255, 255));
         txtResultado.setColumns(20);
         txtResultado.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
         txtResultado.setRows(5);

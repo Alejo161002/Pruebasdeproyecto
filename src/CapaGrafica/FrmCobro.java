@@ -292,6 +292,7 @@ public class FrmCobro extends javax.swing.JFrame {
     }
 
     String tipoTarjeta = Visa.isSelected() ? "Visa" : "MasterCard";
+    String hilera = cine.getPelicula();
 
     try {
         Cliente miCliente = new Cliente(tipoTarjeta, numeroTarjeta, fechaTexto, CCV.getText());
@@ -301,7 +302,8 @@ public class FrmCobro extends javax.swing.JFrame {
             tipoTarjeta,
             numeroTarjeta,
             fechaTexto,
-            CCV.getText()
+            CCV.getText(),
+            hilera
         );
         factura.setVisible(true);
         factura.setLocationRelativeTo(null);

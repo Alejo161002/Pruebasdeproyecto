@@ -6,6 +6,9 @@ package CapaGrafica;
 
 import CapaLogica.Administrador;
 import capaLogica.Cine;
+import static capaLogica.Cine.totalPagadoSala1;
+import static capaLogica.Cine.totalPagadoSala2;
+import static capaLogica.Cine.totalPagadoSala3;
 import javax.swing.JOptionPane;
 
 /**
@@ -151,7 +154,9 @@ public class FrmOpcionesAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDefinirCarteleraActionPerformed
 
     private void btnReporteDeIngresosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteDeIngresosActionPerformed
-        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, "Ingresos de sala 1: "+totalPagadoSala1+"₡"+"\n"+
+                                        "Ingresos sala 2: "+totalPagadoSala2+"₡"+"\n"+
+                                        "Ingresos sala 3: "+totalPagadoSala3+"₡");
     }//GEN-LAST:event_btnReporteDeIngresosActionPerformed
 
     private void btnMostrarEstadoSalasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarEstadoSalasActionPerformed
