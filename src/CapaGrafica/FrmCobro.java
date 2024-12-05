@@ -56,6 +56,7 @@ public class FrmCobro extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         btnVolver = new javax.swing.JButton();
+        Nreserva = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -156,7 +157,9 @@ public class FrmCobro extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(124, 124, 124)
                                 .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
-                                .addGap(121, 121, 121))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Nreserva, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(78, 78, 78))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,7 +193,8 @@ public class FrmCobro extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jLabel6))
+                    .addComponent(jLabel6)
+                    .addComponent(Nreserva))
                 .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -254,7 +258,7 @@ public class FrmCobro extends javax.swing.JFrame {
     private void ComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComprarActionPerformed
         // TODO add your handling code here:
     String fechaTexto = txtFechaVencimiento.getText().trim();
-    String fechaRegex = "^(0[1-9]|1[0-2])-(\\d{4})$"; 
+    String fechaRegex = "^(0[1-9]|1[0-2])-(\\d{4})$";
     if (!fechaTexto.matches(fechaRegex)) {
         JOptionPane.showMessageDialog(this, "El formato de fecha debe ser MM-YYYY.");
         return;
@@ -263,17 +267,23 @@ public class FrmCobro extends javax.swing.JFrame {
     String[] partesFecha = fechaTexto.split("-");
     int mes = Integer.parseInt(partesFecha[0]);
     int anio = Integer.parseInt(partesFecha[1]);
-        try {
-            YearMonth fechaVencimiento = YearMonth.of(anio, mes);
-            if (fechaVencimiento.isBefore(YearMonth.now())) {
-                JOptionPane.showMessageDialog(this, "La fecha debe ser futura.", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
+    
+    if (anio <= 2024) {
+        JOptionPane.showMessageDialog(this, "El año debe ser mayor a 2024.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    try {
+        YearMonth fechaVencimiento = YearMonth.of(anio, mes);
+        if (fechaVencimiento.isBefore(YearMonth.now())) {
+            JOptionPane.showMessageDialog(this, "La fecha debe ser futura.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
         }
     } catch (DateTimeException e) {
         JOptionPane.showMessageDialog(this, "Error en la fecha: " + e.getMessage());
         return;
     }
-
+    
     String numeroTarjeta = N_tarjeta.getText().trim();
     if (numeroTarjeta.isEmpty()||numeroTarjeta.length() != 16) {
         JOptionPane.showMessageDialog(this, "El número de tarjeta debe tener 16 dígitos.", "Error", JOptionPane.ERROR_MESSAGE );
@@ -302,6 +312,7 @@ public class FrmCobro extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Error en la fecha: " + e.getMessage());
         return;
     }
+    
 
     }//GEN-LAST:event_ComprarActionPerformed
  
@@ -332,6 +343,7 @@ public class FrmCobro extends javax.swing.JFrame {
     private javax.swing.JRadioButton MasterCard;
     private javax.swing.JTextField N_cliente;
     private javax.swing.JTextField N_tarjeta;
+    private javax.swing.JLabel Nreserva;
     private javax.swing.JRadioButton Visa;
     private javax.swing.JButton btnVolver;
     private javax.swing.ButtonGroup buttonGroup1;
