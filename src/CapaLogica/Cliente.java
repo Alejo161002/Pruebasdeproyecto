@@ -1,7 +1,7 @@
 
 package CapaLogica;
 
-import java.time.LocalDate;
+import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.regex.Pattern;
 
@@ -12,7 +12,7 @@ public class Cliente {
     private int numeroReservacion;
     private String tipoTarjeta;
     private String numeroTarjeta;
-    private LocalDate fechaVencimiento;
+    private YearMonth fechaVencimiento;
     private String codigoSeguridad;
     private double totalPagado;
     
@@ -20,7 +20,7 @@ public class Cliente {
         this.numeroReservacion = contadorReservaciones++;
         this.tipoTarjeta= tipoTarjeta;
         this.numeroTarjeta=numeroTarjeta;
-        this.fechaVencimiento = LocalDate.parse(fechaVencimiento, DateTimeFormatter.ofPattern("MM-yyyy"));
+        this.fechaVencimiento = YearMonth.parse(fechaVencimiento, DateTimeFormatter.ofPattern("MM-yyyy"));
         this.codigoSeguridad = codigoSeguridad;
         this.totalPagado = 0.0;
         validarDatos();
@@ -31,7 +31,7 @@ public class Cliente {
     }
 
 
-    public LocalDate getFechaVencimiento() {
+    public YearMonth    getFechaVencimiento() {
         return fechaVencimiento;
     }
 
