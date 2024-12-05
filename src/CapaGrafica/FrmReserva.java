@@ -460,7 +460,7 @@ public class FrmReserva extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Numero de entradas maximo excedido");
         }
         
-        
+        cine.reservarAsiento();
 
     }//GEN-LAST:event_btnSelecionarAsientosActionPerformed
 
@@ -470,7 +470,7 @@ public class FrmReserva extends javax.swing.JFrame {
         adm.setVisible(true);
         adm.setLocationRelativeTo(this);
         adm.setCine(cine);
-        adm.setCliente(cliente);
+        
     }//GEN-LAST:event_btnVolverActionPerformed
 
     /**
@@ -511,5 +511,5 @@ public class FrmReserva extends javax.swing.JFrame {
     private javax.swing.JTextField txtninnos;
     // End of variables declaration//GEN-END:variables
 
-   
+    
 }

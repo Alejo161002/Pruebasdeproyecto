@@ -60,7 +60,7 @@ public class Cine {
         int contador = 0;
             for (int i=0;i<filas;i++){
                 for(int j=0;j<columnas;j++){
-                    if (salas[i][j][sala] == "#        ") {
+                    if (salas[i][j][sala] == "R        ") {
                     contador++; 
                     }
                 }
@@ -110,6 +110,20 @@ public class Cine {
         } else {
             return false; 
         }
+    }
+    public boolean reservarAsiento() {
+        boolean funciono = false;
+        for(int i=0;i<profundidad;i++){
+            for(int j=0;j<columnas;j++){
+                for(int k=0;k<filas;k++){
+                    if (salas[k][j][i] == "#        ") {
+                        salas[k][j][i] = "#R        ";
+                        funciono = true;
+                    }
+                }
+            }
+        }
+        return funciono;
     }
     public String mostrarAsientos(int sala) {
         StringBuilder asientos = new StringBuilder();

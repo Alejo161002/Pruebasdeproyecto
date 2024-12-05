@@ -4,6 +4,7 @@
  */
 package CapaGrafica;
 
+import CapaLogica.Cliente;
 import capaLogica.Cine;
 
 
@@ -16,6 +17,7 @@ import capaLogica.Cine;
 public class FrmCliente extends javax.swing.JFrame {
 
     private Cine cine;
+    
     //private final Cine cn;
 
     /**
