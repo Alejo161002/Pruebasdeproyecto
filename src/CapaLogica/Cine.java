@@ -18,8 +18,9 @@ public class Cine {
     private int columnas = 8;
     private int profundidad = 3;
     public String[][][] salas; //= new String[filas][columnas][profundidad];
-    private int numeroSala;
+    public static int numeroSala = 0;
     public static  int contador = 0;
+    public static int numeroDeReservacion = 1000;
     
     
     public static final int CLIENTE_REGULAR = 2800;
@@ -117,7 +118,7 @@ public class Cine {
             for(int j=0;j<columnas;j++){
                 for(int k=0;k<filas;k++){
                     if (salas[k][j][i] == "#        ") {
-                        salas[k][j][i] = "#R        ";
+                        salas[k][j][i] = "R        ";
                         funciono = true;
                     }
                 }

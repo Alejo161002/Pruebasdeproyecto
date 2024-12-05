@@ -73,6 +73,7 @@ public class FrmCobro extends javax.swing.JFrame {
         });
 
         buttonGroup1.add(MasterCard);
+        MasterCard.setSelected(true);
         MasterCard.setText("MasterCard");
         MasterCard.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -304,6 +305,7 @@ public class FrmCobro extends javax.swing.JFrame {
         );
         factura.setVisible(true);
         factura.setLocationRelativeTo(null);
+        factura.setCine(cine);
 
         this.dispose(); 
     } catch (IllegalArgumentException e) {
@@ -312,7 +314,7 @@ public class FrmCobro extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Error en la fecha: " + e.getMessage());
         return;
     }
-    
+   cine.reservarAsiento();
 
     }//GEN-LAST:event_ComprarActionPerformed
  

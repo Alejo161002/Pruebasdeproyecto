@@ -4,25 +4,35 @@
  */
 package CapaGrafica;
 
+import capaLogica.Cine;
+import static capaLogica.Cine.contador;
+
+import static capaLogica.Cine.numeroDeReservacion;
+import static capaLogica.Cine.numeroSala;
+
 /**
  *
  * @author Ale
  */
 public class FrmFactura extends javax.swing.JFrame {
-    
+    private Cine cine;
     public FrmFactura(String numeroReservacion, String nombreCliente, String tipoTarjeta, 
                       String numeroTarjeta, String fechaVencimiento, String codigoSeguridad) {
         initComponents();
                 StringBuilder detalles = new StringBuilder();
-        detalles.append("Número de Compra: ").append(numeroReservacion).append("\n");
+        detalles.append("\tCine \"XXXXX\" ").append(numeroReservacion).append("\n\n");
+        detalles.append("Número de reservación: ").append(numeroDeReservacion++).append("\n");
+        detalles.append("Fecha: ").append(numeroReservacion).append("\n");
         detalles.append("Nombre del Cliente: ").append(nombreCliente).append("\n");
-        detalles.append("Tipo de Tarjeta: ").append(tipoTarjeta).append("\n");
-        detalles.append("Número de Tarjeta: **** **** **** ").append(numeroTarjeta.substring(numeroTarjeta.length() - 4)).append("\n");
-        detalles.append("Fecha de Vencimiento: ").append(fechaVencimiento).append("\n");
-        detalles.append("Código de Seguridad: ").append("***").append("\n");
+        detalles.append("Tarjeta "+tipoTarjeta+" No.: **** **** **** ").append(numeroTarjeta.substring(numeroTarjeta.length() - 4)).append("\n\n");
+        detalles.append("Sala No. ").append(numeroSala+1).append("\n");
+        detalles.append("Pelicula ").append(cine.pelicula).append("\n");
 
          jTextArea1.setText(detalles.toString());
         jTextArea1.setEditable(false);
+    }
+    public void setCine(Cine cine){
+        this.cine = cine;
     }
 
     /**
@@ -37,6 +47,7 @@ public class FrmFactura extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
+        btnVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,18 +57,30 @@ public class FrmFactura extends javax.swing.JFrame {
 
         jLabel1.setText("Numero de Compra");
 
+        btnVolver.setBackground(new java.awt.Color(255, 102, 102));
+        btnVolver.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnVolver.setForeground(new java.awt.Color(255, 255, 255));
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnVolver)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(19, 19, 19)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(48, 48, 48)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -67,11 +90,22 @@ public class FrmFactura extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        this.dispose();
+        FrmCobro cobro = new FrmCobro();
+        cobro.setVisible(true);
+        cobro.setLocationRelativeTo(this);
+        cobro.setCine(cine);
+        contador=0;
+    }//GEN-LAST:event_btnVolverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -120,6 +154,7 @@ public class FrmFactura extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnVolver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
